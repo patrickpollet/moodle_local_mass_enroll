@@ -19,7 +19,7 @@ $locallangroot = '';
 
 $id = required_param('id', PARAM_INT);
 
-if (!$course = get_record('course', 'id', $id)) {
+if (!$course = $DB->get_record('course', array('id' => $id))) {
 	error("Course is misconfigured");
 }
 
@@ -27,7 +27,7 @@ if (!$course = get_record('course', 'id', $id)) {
 
 require_login($course);
 
-$context = get_context_instance(CONTEXT_COURSE, $course->id);
+$context = context_course::instance($course->id);
 require_capability('moodle/course:update', $context);
 
 /// Start making page
@@ -57,8 +57,11 @@ if ($mform->is_cancelled()) {
 	if ($data = $mform->get_data(false)) { // no magic quotes
 
 		require_once ($CFG->dirroot . '/group/lib.php');
-		print_header($course->fullname . ': ' . $strinscriptions, $course->fullname . ': ' . $strinscriptions, $navigation);
-		print_heading($strinscriptions);
+		$PAGE->set_title($course->fullname . ': ' . $strinscriptions);
+		$PAGE->set_heading($course->fullname . ': ' . $strinscriptions);
+		/* SCANMSG: may be additional work required for $navigation variable */
+		echo $OUTPUT->header();
+		echo $OUTPUT->heading($strinscriptions);
 
 		$mform->save_files($destination_directory);
 		$newfilename = $mform->get_new_filename();
@@ -74,19 +77,22 @@ if ($mform->is_cancelled()) {
 		}
 
 		print_simple_box(nl2br($result), 'center', '90%');
-		print_continue($CFG->wwwroot . '/course/view.php?id=' . $course->id); // Back to course page
-		print_footer($course);
+		echo $OUTPUT->continue_button($CFG->wwwroot . '/course/view.php?id=' . $course->id); // Back to course page
+		echo $OUTPUT->footer($course);
 		exit;
 	}
 
-print_header($course->fullname . ': ' . $strinscriptions, $course->fullname . ': ' . $strinscriptions, $navigation);
+$PAGE->set_title($course->fullname . ': ' . $strinscriptions);
+$PAGE->set_heading($course->fullname . ': ' . $strinscriptions);
+/* SCANMSG: may be additional work required for $navigation variable */
+echo $OUTPUT->header();
 
-$icon = '<img class="icon" src="' . $CFG->pixpath . '/i/admin.gif" alt="' . get_string('mass_enroll', 'mass_enroll', '', $locallangroot) . '"/>';
+$icon = '<img class="icon" src="' . $OUTPUT->pix_url('/i/admin') . '" alt="' . get_string('mass_enroll', 'mass_enroll', '', $locallangroot) . '"/>';
 print_heading_with_help($strinscriptions, 'mass_enroll', 'mass_enroll', $icon);
 print_simple_box(get_string('mass_enroll_info', 'mass_enroll', '', $locallangroot), 'center', '90%');
 
 $mform->display();
-print_footer($course);
+echo $OUTPUT->footer($course);
 exit;
 
 /**
@@ -129,7 +135,7 @@ function mass_enroll($file, $course, $context, $data) {
                 continue;
             $fields = explode(';', $line);
             // 1rst column = id Moodle (idnumber,username or email)
-            if (!$user = get_record('user', $useridfield, trim($fields[0]))) {
+            if (!$user = $DB->get_record('user', array($useridfield => trim($fields[0])))) {
                 $result .= get_string('im:user_unknown', 'mass_enroll', $fields[0], $locallangroot) . "\n";
                 continue;
             }
@@ -286,7 +292,7 @@ function mass_enroll_group_in_grouping($gid, $gpid) {
    where groupingid = $gpid
    and groupid = $gid
 EOF;
-	return get_record_sql($sql);
+	return $DB->get_record_sql($sql);
 }
 
 /**
@@ -297,6 +303,6 @@ function mass_enroll_add_group_grouping($gid, $gpid) {
 	$new->groupid = $gid;
 	$new->groupingid = $gpid;
 	$new->timeadded = time();
-	return insert_record('groupings_groups', $new);
+	return $DB->insert_record('groupings_groups', $new);
 }
 ?>

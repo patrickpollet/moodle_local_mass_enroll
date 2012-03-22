@@ -22,7 +22,7 @@ class mass_enroll_form extends moodleform {
 
 		$mform->addElement('header', 'general', ''); //fill in the data depending on page params
 		//later using set_data
-		$mform->addElement('file', 'attachment', get_string('location', 'enrol_flatfile'));
+		$mform->addElement('filepicker', 'attachment', get_string('location', 'enrol_flatfile'));
 
 		$mform->addRule('attachment', null, 'required');
 
