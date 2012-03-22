@@ -1,0 +1,98 @@
+
+<h1>Bulk enrolments</h1>
+
+
+<p>With this option you are going to enrol a list of known users
+from a file with one account per line (empty lines or unknown accounts will be skipped).</p>
+
+<p>
+The file may contains one or two columns, separated by a comma, a semi-column or a tabulation.
+
+You should prepare it from your usual spreadsheet program from official lists of students, for example,
+and add if needed a column with groups to which you want these users to be added. Finally export it as CSV. (*)</p>
+
+<p>
+<b> The first one must contains a unique account identifier </b>: idnumber (by default) login or email  of the target user. (**). </p>
+
+<p>
+The second <b>if present,</b> contains the group's name in wich you want that user to be added. </p>
+
+<p>
+If the group name does not exist, it will be created in your course, together with a grouping of the same name to which the group will be added.
+.<br/>
+This is due to the fact that in Moodle, activities can be restricted to groupings (group of groups), not groups,
+ so it will make your life easier. (this requires that groupings are enabled by your site administrator).
+
+<p>
+You may have in the same file different target groups or no groups for some accounts
+</p>
+
+<p>
+You may unselect options to create groups and groupings if you are sure that they already exist in the course.
+</p>
+
+<p>
+By default the users will be enroled as students but you may select other roles that you are allowed to manage (teacher, non editing teacher
+or any custom roles)
+</p>
+
+<p>
+You may repeat this operation at will without dammages, for example if you forgot or mispelled the target group.
+</p>
+
+
+<h2> Sample files </h2>
+
+Id numbers and a group name to be created in needed in the course (*)
+<pre>
+" 2513110";" 4GEN"
+" 2512334";" 4GEN"
+" 2314149";" 4GEN"
+" 2514854";" 4GEN"
+" 2734431";" 4GEN"
+" 2514934";" 4GEN"
+" 2631955";" 4GEN"
+" 2512459";" 4GEN"
+" 2510841";" 4GEN"
+</pre>
+
+only idnumbers (**)
+<pre>
+2513110
+2512334
+2314149
+2514854
+2734431
+2514934
+2631955
+</pre>
+
+only emails (**)
+<pre>
+toto@insa-lyon.fr
+titi@]insa-lyon.fr
+tutu@insa-lyon.fr
+</pre>
+
+usernames and groups, separated by a tab :
+
+<pre>
+ppollet      groupe_de_test              will be in that group
+codet        groupe_de_test              also him
+astorck      autre_groupe                will be in another group
+yjayet                                   no group for this one
+                                         empty line skipped
+unknown                                  unknown account skipped
+</pre>
+
+<p>
+<span <font color='red'>(*) </font></span>: double quotes and spaces, added by some spreadsheet programs will be removed.
+</p>
+
+<p>
+<span <font color='red'>(**) </font></span>: target account must exit in Moodle ; this is normaly the case if Moodle is synchronized with
+some external directory (LDAP...)
+</p>
+
+
+

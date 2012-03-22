@@ -1,0 +1,93 @@
+
+<h1>Inscriptions massives</h1>
+
+
+<p>Avec cette option vous allez pouvoir inscrire massivement à votre cours une liste d utilisateurs existant dans Moodle
+contenue dans un fichier que vous avez préparé, un utilisateur par ligne (les lignes vides, ou celles
+contenant un compte inconnu sont ignorées). </p>
+
+<p>
+Ce fichier peut contenir <b>une ou deux colonnes</b>, séparées alors par une virgule, ou point-virgule ou une tabulation.
+Il peut être préparé à partir de vos listes de Scolarité par une simple remise en forme et un export CSV depuis votre tableur favori (*)</p>
+
+<p>
+<b>La première colonne doit contenir un identifiant unique de l étudiant concerné</b>, par défaut son numéro interne (idnumber),
+mais vous pouvez choisir aussi une liste d'adresses email ou de logins (**). </p>
+
+<p>
+La seconde, <b>si elle est présente, </b> indique le groupe (au sens de ce cours Moodle) ou vous voulez inscrire cet étudiant. <br/>
+Si ce groupe n existe pas déja dans votre cours, il sera automatiquement créé, ainsi qu'un le groupement homonyme correspondant.<br/>
+En effet sous Moodle vous pouvez restreindre toute activité à un groupement (un groupe de groupes) mais pas à un groupe.<br/>
+
+Il est tout à fait possible dans un même fichier d'avoir des groupes différents (ou pas de groupes) dans certaines lignes. <br/>
+
+
+
+Vous pouvez décocher ces options de création automatique  si le groupe/groupement visé existe déjé ;
+</p>
+
+<p>
+Par défaut cette liste est censée contenir des étudiants à inscrire, mais vous pouvez aussi spécifier qu'ils auront
+le rôle enseignant ou enseignant non éditeur.
+</p>
+
+<p>
+Vous pouvez répeter l'opération plusieurs fois sans dommages, par exemple si vous avez oublié le groupe ou inscrire les étudiants
+ou si vous l'avez mal orthographié.
+</p>
+
+<h2> Exemples de fichiers </h2>
+
+des numéros  INSA et un groupe a créer si nécessaire dans le cours (*)
+<pre>
+" 2513110";" 4GEN"
+" 2512334";" 4GEN"
+" 2314149";" 4GEN"
+" 2514854";" 4GEN"
+" 2734431";" 4GEN"
+" 2514934";" 4GEN"
+" 2631955";" 4GEN"
+" 2512459";" 4GEN"
+" 2510841";" 4GEN"
+</pre>
+
+juste des numéros INSA (**)
+<pre>
+2513110
+2512334
+2314149
+2514854
+2734431
+2514934
+2631955
+</pre>
+
+juste des emails (**)
+<pre>
+toto@insa-lyon.fr
+titi@]insa-lyon.fr
+tutu@insa-lyon.fr
+</pre>
+
+des logins et des groupes (separés içi par une tabulation) :
+
+<pre>
+ppollet      groupe_de_test              sera dans ce groupe
+codet        groupe_de_test              lui aussi
+astorck      autre_groupe                et lui dans l'autre groupe
+yjayet                                    n'a pas de groupe proposé
+                                          ligne vide ignorée
+inconnu                                   existe pas ligne ignorée
+</pre>
+
+<p>
+<span <font color='red'>(*) </font></span>: les éventuelles apostrophes ou espaces ajoutées lors de l'export CSV depuis votre tableur favori seront écartés.
+</p>
+
+<p>
+<span <font color='red'>(**) </font></span>: les comptes visés doivent exister dans Moodle, ce qui est normalement le cas après la synchronisation qui s'effectue chaque nuit
+avec l'annuaire  LDAP de l'établissement.
+</p>
+
+
+
