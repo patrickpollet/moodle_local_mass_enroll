@@ -22,9 +22,9 @@ $string['username'] = 'Login';
 $string['mail_enrolment_subject'] = 'Bulk enrolments on {$a}';
 $string['mail_enrolment']='
 Hello,
-You just enroled the following list of users to your course \'$a->course\'.
+You just enroled the following list of users to your course \'{$a->course}\'.
 Here is a report of operations :
-$a->report
+{$a->report}
 Sincerly.
 ';
 $string['email_sent'] = 'email sent to {$a}';
@@ -138,7 +138,7 @@ unknown                                  unknown account skipped
 </p>
 
 <p>
-<span <font color='red'>(**) </font></span>: target account must exit in Moodle ; this is normaly the case if Moodle is synchronized with
+<span <font color='red'>(**) </font></span>: target account must exit in Moodle ; this is normally the case if Moodle is synchronized with
 some external directory (LDAP...)
 </p>
 

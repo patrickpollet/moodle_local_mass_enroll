@@ -8,62 +8,61 @@ class mass_enroll_form extends moodleform {
 	function definition() {
 		global $CFG;
 
-		// $locallangroot = $CFG->dirroot.'/local/course/admin/mass_enroll/lang/';
-		// since the help file MUST be copied to moodledata/lang/xx_utf8, let's also require
-		// that the translation file be there
-		$locallangroot = '';
 
 		$mform = & $this->_form;
 		$course = $this->_customdata['course'];
 		$context = $this->_customdata['context'];
 
 		// the upload manager is used directly in post precessing, moodleform::save_files() is not used yet
-		$this->set_upload_manager(new upload_manager('attachment'));
+		//$this->set_upload_manager(new upload_manager('attachment'));
 
 		$mform->addElement('header', 'general', ''); //fill in the data depending on page params
 		//later using set_data
 		$mform->addElement('filepicker', 'attachment', get_string('location', 'enrol_flatfile'));
 
 		$mform->addRule('attachment', null, 'required');
-
-		/**
-        $roles = get_assignable_roles_for_switchrole($context,'shortname');
-        print_r($roles);
-        foreach ($roles as $id=>$shortname ){
-            $roles[$id]=get_string($shortname);
+		
+		$choices = csv_import_reader::get_delimiter_list();
+        $mform->addElement('select', 'delimiter_name', get_string('csvdelimiter', 'tool_uploaduser'), $choices);
+        if (array_key_exists('cfg', $choices)) {
+            $mform->setDefault('delimiter_name', 'cfg');
+        } else if (get_string('listsep', 'langconfig') == ';') {
+            $mform->setDefault('delimiter_name', 'semicolon');
+        } else {
+            $mform->setDefault('delimiter_name', 'comma');
         }
-        */
-        $roles = get_assignable_roles_for_switchrole($context);
 
-
-		$mform->addElement('select', 'roleassign', get_string('roleassign', 'mass_enroll', '', $locallangroot), $roles);
+        $choices = textlib::get_encodings();
+        $mform->addElement('select', 'encoding', get_string('encoding', 'tool_uploaduser'), $choices);
+        $mform->setDefault('encoding', 'UTF-8');
+		
+		
+        $roles = get_assignable_roles($context);
+		$mform->addElement('select', 'roleassign', get_string('roleassign', 'local_mass_enroll'), $roles);
 		$mform->setDefault('roleassign', 5); //student
 
 		$ids = array (
-			'idnumber' => get_string('idnumber', 'mass_enroll', '', $locallangroot),
-			'username' => get_string('username', 'mass_enroll', '', $locallangroot),
+			'idnumber' => get_string('idnumber', 'local_mass_enroll'),
+			'username' => get_string('username', 'local_mass_enroll'),
 			'email' => get_string('email')
 		);
-		$mform->addElement('select', 'firstcolumn', get_string('firstcolumn', 'mass_enroll', '', $locallangroot), $ids);
+		$mform->addElement('select', 'firstcolumn', get_string('firstcolumn', 'local_mass_enroll'), $ids);
 		$mform->setDefault('firstcolumn', 'idnumber');
 
-		$mform->addElement('selectyesno', 'creategroups', get_string('creategroups', 'mass_enroll', '', $locallangroot));
+		$mform->addElement('selectyesno', 'creategroups', get_string('creategroups', 'local_mass_enroll'));
 		$mform->setDefault('creategroups', 1);
-		//$mform->setHelpButton('creer_groupes', array('mass_enroll', get_string('mass_enroll', 'mass_enroll', '', $locallangroot), 'mass_enroll'));
 
-		if ($CFG->enablegroupings) {
-			$mform->addElement('selectyesno', 'creategroupings', get_string('creategroupings', 'mass_enroll', '', $locallangroot));
+			$mform->addElement('selectyesno', 'creategroupings', get_string('creategroupings', 'local_mass_enroll'));
 			$mform->setDefault('creategroupings', 1);
-			//  $mform->setHelpButton('creategroupings', array('mass_enroll', get_string('mass_enroll', 'mass_enroll', '', $locallangroot), 'mass_enroll'));
-		}
 
-		$mform->addElement('selectyesno', 'mailreport', get_string('mailreport', 'mass_enroll', '', $locallangroot));
+
+		$mform->addElement('selectyesno', 'mailreport', get_string('mailreport', 'local_mass_enroll'));
 		$mform->setDefault('mailreport', 1);
 
 		//-------------------------------------------------------------------------------
 		// buttons
 
-		$this->add_action_buttons(true, get_string('enroll', 'mass_enroll', '', $locallangroot));
+		$this->add_action_buttons(true, get_string('enroll', 'local_mass_enroll'));
 
 		$mform->addElement('hidden', 'id', $course->id);
 		$mform->setType('id', PARAM_INT);
