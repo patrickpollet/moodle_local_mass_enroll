@@ -35,6 +35,7 @@ INSTALLATION MOODLE 2.x
 go to your moodle installation directory and clone the github repo by
 
 cd /var/www/moodle
+
 git clone  https://github.com/patrickpollet/moodle_local_mass_enroll.git  local/mass_enroll
 
 echo 'local/mass_enroll' >> .git/info/exclude
