@@ -90,13 +90,20 @@ add the lines marqued with a '+' sign (without the '+' sign) just before the com
 
 
 diff --git a/lib/enrollib.php b/lib/enrollib.php
+
 index b6736c4..fcd34ff 100644
+
 --- a/lib/enrollib.php
+
 +++ b/lib/enrollib.php
+
 @@ -468,6 +468,16 @@ function enrol_add_course_navigation(navigation_node $coursenode, $course) {
-             $usersnode->add(get_string('notenrolledusers', 'enrol'), $url, navigation_node::TYPE_SETTING, null, 'otherusers', new pix_icon('i/roles'
-         }
-     }
+
+               $usersnode->add(get_string('notenrolledusers', 'enrol'), $url, navigation_node::TYPE_SETTING, null, 'otherusers', new pix_icon('i/roles'
+
+           }
+
+      }
 +    
 +    
 +    //PATCH PP mass enrol
@@ -109,6 +116,7 @@ index b6736c4..fcd34ff 100644
 +    // END patch PP
  
      // just in case nothing was actually added
+
      $usersnode->trim_if_empty();
 
  Thus a new menu item named 'Bulk enrolments' should appear under the item 'Users' in course admin menu 
