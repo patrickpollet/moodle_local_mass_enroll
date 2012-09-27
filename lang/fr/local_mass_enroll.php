@@ -3,13 +3,19 @@ $string['pluginname'] = 'Inscriptions massives';
 
 $string['mass_enroll'] = 'Inscriptions massives';
 $string['mass_enroll_info'] = <<<EOS
+<p>
 Avec cette option vous allez pouvoir inscrire Massivement à votre cours une liste d utilisateurs existants dans Moodle
-contenue dans un fichier que vous avez préparé, un compte par ligne (les lignes vides, ou celles
-contenant un identifiant de compte inconnu sont ignorées). <br/>
+contenue dans un fichier que vous avez préparé, un compte par ligne 
+</p>
+<p>
+<b>La premiere ligne </b>, les lignes vides, ou celles contenant un identifiant de compte inconnu seront ignorées.
+</p>
+<p>
 Ce fichier peut contenir une ou deux colonnes, séparées alors par une virgule, ou point-virgule ou une tabulation. <br/>
 <b>La première doit contenir un identifiant unique : N° étudiant (idnumber Moodle), login ou email  </b> de l'utilisateur concerné. <br/>
 La seconde, <b>si elle est présente, </b> indique le groupe (au sens de ce cours Moodle) ou vous voulez inscrire cet utilisateur. <br/>
 Vous pouvez répeter l'opération plusieurs fois sans dommages, par exemple si vous avez oublié le groupe ou inscrire les utilisateurs.
+</p>
 EOS;
 $string['enroll'] = 'Les inscrire à mon cours';
 $string['mailreport'] = 'M\'envoyer un rapport par mail';
@@ -48,10 +54,13 @@ $string['mass_enroll_help']= <<<EOS
 
 <h1>Inscriptions massives</h1>
 
-
-<p>Avec cette option vous allez pouvoir inscrire massivement à votre cours une liste d utilisateurs existant dans Moodle
-contenue dans un fichier que vous avez préparé, un utilisateur par ligne (les lignes vides, ou celles
-contenant un compte inconnu sont ignorées). </p>
+<p>
+Avec cette option vous allez pouvoir inscrire Massivement à votre cours une liste d utilisateurs existants dans Moodle
+contenue dans un fichier que vous avez préparé, un compte par ligne 
+</p>
+<p>
+<b>La premiere ligne </b>, les lignes vides, ou celles contenant un identifiant de compte inconnu seront ignorées.
+</p>
 
 <p>
 Ce fichier peut contenir <b>une ou deux colonnes</b>, séparées alors par une virgule, ou point-virgule ou une tabulation.
@@ -87,6 +96,7 @@ ou si vous l'avez mal orthographié.
 
 des numéros  INSA et un groupe a créer si nécessaire dans le cours (*)
 <pre>
+"numéro INSA";"groupe"
 " 2513110";" 4GEN"
 " 2512334";" 4GEN"
 " 2314149";" 4GEN"
@@ -100,6 +110,7 @@ des numéros  INSA et un groupe a créer si nécessaire dans le cours (*)
 
 juste des numéros INSA (**)
 <pre>
+numéro INSA
 2513110
 2512334
 2314149
@@ -111,6 +122,7 @@ juste des numéros INSA (**)
 
 juste des emails (**)
 <pre>
+email
 toto@insa-lyon.fr
 titi@]insa-lyon.fr
 tutu@insa-lyon.fr
@@ -119,6 +131,7 @@ tutu@insa-lyon.fr
 des logins et des groupes (separés içi par une tabulation) :
 
 <pre>
+login        groupe	
 ppollet      groupe_de_test              sera dans ce groupe
 codet        groupe_de_test              lui aussi
 astorck      autre_groupe                et lui dans l'autre groupe

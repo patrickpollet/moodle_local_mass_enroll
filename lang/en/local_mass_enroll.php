@@ -3,13 +3,18 @@ $string['pluginname'] = 'Mass enrolments';
 
 $string['mass_enroll'] = 'Bulk enrolments';
 $string['mass_enroll_info'] = <<<EOS
-With this option you are going to enrol a list of known users
-from a file with one account per line (empty lines or unknown accounts will be skipped). <br/>
+<p>
+With this option you are going to enrol a list of known users from a file with one account per line
+</p>
+<p>
+<b> The firstline </b> the empty lines or unknown accounts will be skipped. </p>
+<p>
 The file may contains one or two columns, separated by a comma, a semi-column or a tabulation.
 <br/>
 <b>The first one must contains a unique account identifier : idnumber (by default) login or email  </b> of the target user. <br/>
 The second <b>if present,</b> contains the group's name in wich you want that user be be added. <br/>
 You may repeat this operation at will without dammages, for example if you forgot or mispelled the target group.
+</p>
 EOS;
 $string['enroll'] = 'Enrol them to my course';
 $string['mailreport'] = 'Send me a mail report';
@@ -49,9 +54,11 @@ $string['im:err_opening_file'] = 'error opening file {$a}';
 $string['mass_enroll_help'] = <<<EOS
 <h1>Bulk enrolments</h1>
 
-
-<p>With this option you are going to enrol a list of known users
-from a file with one account per line (empty lines or unknown accounts will be skipped).</p>
+<p>
+With this option you are going to enrol a list of known users from a file with one account per line
+</p>
+<p>
+<b> The firstline </b> the empty lines or unknown accounts will be skipped. </p>
 
 <p>
 The file may contains one or two columns, separated by a comma, a semi-column or a tabulation.
@@ -93,6 +100,7 @@ You may repeat this operation at will without dammages, for example if you forgo
 
 Id numbers and a group name to be created in needed in the course (*)
 <pre>
+"idnumber";"group"
 " 2513110";" 4GEN"
 " 2512334";" 4GEN"
 " 2314149";" 4GEN"
@@ -106,6 +114,7 @@ Id numbers and a group name to be created in needed in the course (*)
 
 only idnumbers (**)
 <pre>
+idnumber
 2513110
 2512334
 2314149
@@ -117,6 +126,7 @@ only idnumbers (**)
 
 only emails (**)
 <pre>
+email
 toto@insa-lyon.fr
 titi@]insa-lyon.fr
 tutu@insa-lyon.fr
@@ -125,6 +135,7 @@ tutu@insa-lyon.fr
 usernames and groups, separated by a tab :
 
 <pre>
+username	 group
 ppollet      groupe_de_test              will be in that group
 codet        groupe_de_test              also him
 astorck      autre_groupe                will be in another group

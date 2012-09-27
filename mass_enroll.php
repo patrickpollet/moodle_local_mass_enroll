@@ -81,7 +81,7 @@ if ($mform->is_cancelled()) {
 			$result .= "\n" . get_string('email_sent', 'local_mass_enroll', $USER->email);
 		}
 
-	    $OUTPUT->box(nl2br($result), 'center', '90%');
+	    echo $OUTPUT->box(nl2br($result), 'center');
 	   
 		echo $OUTPUT->continue_button($CFG->wwwroot . '/course/view.php?id=' . $course->id); // Back to course page
 		echo $OUTPUT->footer($course);
@@ -92,15 +92,13 @@ $PAGE->set_title($course->fullname . ': ' . $strinscriptions);
 $PAGE->set_heading($course->fullname . ': ' . $strinscriptions);
 $PAGE->set_url('/local/mass_enroll/mass_enroll.php', array('id'=>$id));
 
-/* SCANMSG: may be additional work required for $navigation variable */
+
 echo $OUTPUT->header();
 
-//$icon = '<img class="icon" src="' . $OUTPUT->pix_url('/i/admin') . '" alt="' . get_string('mass_enroll', 'local_mass_enroll') . '"/>';
-//heading_with_help($text, $helpidentifier, $component = 'moodle', $icon = '', $iconalt = '') {
+
 
 echo $OUTPUT->heading_with_help($strinscriptions, 'mass_enroll', 'local_mass_enroll','i/admin',get_string('mass_enroll', 'local_mass_enroll'));
-//print_simple_box(get_string('mass_enroll_info', 'local_mass_enroll'), 'center', '90%');
-$OUTPUT->box (get_string('mass_enroll_info', 'local_mass_enroll'), 'center', '90%');
+echo $OUTPUT->box (get_string('mass_enroll_info', 'local_mass_enroll'), 'center');
 $mform->display();
 echo $OUTPUT->footer($course);
 exit;

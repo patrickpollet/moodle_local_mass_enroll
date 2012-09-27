@@ -71,12 +71,16 @@ function mass_enroll($cir, $course, $context, $data) {
         if (empty ($fields))
         continue;
 
-        print_r($fields);
-        //$enrollablecount++;
-        //continue;
-
+        // print_r($fields);
+        // $enrollablecount++;
+        // continue;
+        
         // 1rst column = id Moodle (idnumber,username or email)
-        if (!$user = $DB->get_record('user', array($useridfield => trim($fields[0])))) {
+        
+          // get rid on eventual double quotes unfortunately not done by Moodle CSV importer 
+            $fields[0]= str_replace('"', '', trim($fields[0]));
+        
+        if (!$user = $DB->get_record('user', array($useridfield => $fields[0]))) {
             $result .= get_string('im:user_unknown', 'local_mass_enroll', $fields[0] ). "\n";
             continue;
         }
@@ -107,7 +111,7 @@ function mass_enroll($cir, $course, $context, $data) {
             $enrollablecount++;
         }
 
-        $group = trim($fields[1]);
+        $group = str_replace('"','',trim($fields[1]));
         // 2nd column ?
         if (empty ($group)) {
             $result .= "\n";
@@ -189,6 +193,7 @@ function mass_enroll($cir, $course, $context, $data) {
  *
  */
 function mass_enroll_add_group($newgroupname, $courseid) {
+    $newgroup = new stdClass();
     $newgroup->name = $newgroupname;
     $newgroup->courseid = $courseid;
     $newgroup->lang = current_language();
@@ -200,6 +205,7 @@ function mass_enroll_add_group($newgroupname, $courseid) {
  *
  */
 function mass_enroll_add_grouping($newgroupingname, $courseid) {
+    $newgrouping = new StdClass();
     $newgrouping->name = $newgroupingname;
     $newgrouping->courseid = $courseid;
     return groups_create_grouping($newgrouping);
@@ -242,6 +248,7 @@ EOF;
  */
 function mass_enroll_add_group_grouping($gid, $gpid) {
      global $CFG,$DB;
+    $new = new stdClass();
     $new->groupid = $gid;
     $new->groupingid = $gpid;
     $new->timeadded = time();
