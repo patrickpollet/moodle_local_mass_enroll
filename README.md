@@ -36,10 +36,13 @@ go to your moodle installation directory and clone the github repo by
 
 cd /var/www/moodle
 git clone  https://github.com/patrickpollet/moodle_local_mass_enroll.git  local/mass_enroll
+
 echo 'local/mass_enroll' >> .git/info/exclude
 
-#eventually select the branch (moodle_22, moodle_23)
+eventually select the branch (moodle_22, moodle_23)
+
 cd local/mass_enroll
+
 git checkout moodle_2x  
 
 2) using zip 
