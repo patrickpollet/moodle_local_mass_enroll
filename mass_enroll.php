@@ -97,7 +97,7 @@ echo $OUTPUT->header();
 
 
 
-echo $OUTPUT->heading_with_help($strinscriptions, 'mass_enroll', 'local_mass_enroll','i/admin',get_string('mass_enroll', 'local_mass_enroll'));
+echo $OUTPUT->heading_with_help($strinscriptions, 'mass_enroll', 'local_mass_enroll','icon',get_string('mass_enroll', 'local_mass_enroll'));
 echo $OUTPUT->box (get_string('mass_enroll_info', 'local_mass_enroll'), 'center');
 $mform->display();
 echo $OUTPUT->footer($course);
