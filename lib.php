@@ -32,8 +32,14 @@
 defined('MOODLE_INTERNAL') || die();
 
 
+
 /**
- * realizes the mass enrolment
+ * process the mass enrolment
+ * @param csv_import_reader $cir  an import reader created by caller
+ * @param Object $course  a course record from table mdl_course
+ * @param Object $context  course context instance
+ * @param Object $data    data from a moodleform 
+ * @return string  log of operations 
  */
 function mass_enroll($cir, $course, $context, $data) {
     global $CFG,$DB;
@@ -136,7 +142,7 @@ function mass_enroll($cir, $course, $context, $data) {
         }
 
         // if groupings are enabled on the site (should be ?)
-        // if ($CFG->enablegroupings) {
+        // if ($CFG->enablegroupings) { // not anymore in Moodle 2.x
         if (!($gpid = mass_enroll_grouping_exists($group, $courseid))) {
             if ($data->creategroupings) {
                 if (!($gpid = mass_enroll_add_grouping($group, $courseid))) {
@@ -188,9 +194,12 @@ function mass_enroll($cir, $course, $context, $data) {
     return $result;
 }
 
+
 /**
- *
- *
+ * Enter description here ...
+ * @param string $newgroupname
+ * @param int $courseid
+ * @return int id   Moodle id of inserted record 
  */
 function mass_enroll_add_group($newgroupname, $courseid) {
     $newgroup = new stdClass();
@@ -200,9 +209,12 @@ function mass_enroll_add_group($newgroupname, $courseid) {
     return groups_create_group($newgroup);
 }
 
+
 /**
- *
- *
+ * Enter description here ...
+ * @param string $newgroupingname
+ * @param int $courseid
+ * @return int id Moodle id of inserted record
  */
 function mass_enroll_add_grouping($newgroupingname, $courseid) {
     $newgrouping = new StdClass();
@@ -214,6 +226,7 @@ function mass_enroll_add_grouping($newgroupingname, $courseid) {
 /**
  * @param string $name group name
  * @param int $courseid course
+ * @return string or false 
  */
 function mass_enroll_group_exists($name, $courseid) {
     return groups_get_group_by_name($courseid, $name);
@@ -222,6 +235,7 @@ function mass_enroll_group_exists($name, $courseid) {
 /**
  * @param string $name group name
  * @param int $courseid course
+ * @return string or false
  */
 function mass_enroll_grouping_exists($name, $courseid) {
     return groups_get_grouping_by_name($courseid, $name);
@@ -231,23 +245,27 @@ function mass_enroll_grouping_exists($name, $courseid) {
 /**
  * @param int $gid group ID
  * @param int $gpid grouping ID
+ * @return mixed a fieldset object containing the first matching record or false
  */
 function mass_enroll_group_in_grouping($gid, $gpid) {
-     global $CFG,$DB;
+     global $DB;
     $sql =<<<EOF
-   select * from {$CFG->prefix}groupings_groups
-   where groupingid = $gpid
-   and groupid = $gid
+   select * from {groupings_groups}
+   where groupingid = ?
+   and groupid = ?
 EOF;
-    return $DB->get_record_sql($sql);
+    $params = array($gpid, $gid);
+    return $DB->get_record_sql($sql,$params,IGNORE_MISSING);
 }
 
 /**
  * @param int $gid group ID
  * @param int $gpid grouping ID
+ * @return bool|int true or new id
+ * @throws dml_exception A DML specific exception is thrown for any errors.
  */
 function mass_enroll_add_group_grouping($gid, $gpid) {
-     global $CFG,$DB;
+     global $DB;
     $new = new stdClass();
     $new->groupid = $gid;
     $new->groupingid = $gpid;
