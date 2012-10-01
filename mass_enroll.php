@@ -30,10 +30,14 @@ require_capability('moodle/role:assign', $context);
 
 /// Start making page
 $PAGE->set_pagelayout('incourse');
-$PAGE->set_url('/mod/ciiexamen/index.php', array('id'=>$id));
+$PAGE->set_url('/local/mass_enroll/mass_enroll.php', array('id'=>$id));
 
 $strinscriptions = get_string('mass_enroll', 'local_mass_enroll');
 
+$PAGE->set_title($course->fullname . ': ' . $strinscriptions);
+$PAGE->set_heading($course->fullname . ': ' . $strinscriptions);
+
+echo $OUTPUT->header();
 
 $mform = new mass_enroll_form($CFG->wwwroot . '/local/mass_enroll/mass_enroll.php', array (
 	'course' => $course,
@@ -41,14 +45,9 @@ $mform = new mass_enroll_form($CFG->wwwroot . '/local/mass_enroll/mass_enroll.ph
 ));
 
 if ($mform->is_cancelled()) {
-    redirect($CFG->wwwroot . '/course/view.php?id=' . $id);
+    redirect(new moodle_url('/course/view.php', array('id'=>$id)));
 } else
 if ($data = $mform->get_data(false)) { // no magic quotes
-
-    require_once ($CFG->dirroot . '/group/lib.php');
-    $PAGE->set_title($course->fullname . ': ' . $strinscriptions);
-    $PAGE->set_heading($course->fullname . ': ' . $strinscriptions);
-    echo $OUTPUT->header();
     echo $OUTPUT->heading($strinscriptions);
 
     $iid = csv_import_reader::get_new_iid('uploaduser');
@@ -65,9 +64,10 @@ if ($data = $mform->get_data(false)) { // no magic quotes
         print_error('csvemptyfile', 'error', $returnurl);
     }
 
-
-
     $result = mass_enroll($cir, $course, $context, $data);
+    
+    $cir->close();
+    $cir->cleanup(false); // only currently uploaded CSV file 
 
     if ($data->mailreport) {
         $a = new StdClass();
@@ -80,25 +80,17 @@ if ($data = $mform->get_data(false)) { // no magic quotes
 
     echo $OUTPUT->box(nl2br($result), 'center');
 
-    echo $OUTPUT->continue_button($CFG->wwwroot . '/course/view.php?id=' . $course->id); // Back to course page
+    echo $OUTPUT->continue_button(new moodle_url('/course/view.php',array('id'=>$id))); // Back to course page
     echo $OUTPUT->footer($course);
-    exit;
+    die();
 }
-
-$PAGE->set_title($course->fullname . ': ' . $strinscriptions);
-$PAGE->set_heading($course->fullname . ': ' . $strinscriptions);
-$PAGE->set_url('/local/mass_enroll/mass_enroll.php', array('id'=>$id));
-
-
-echo $OUTPUT->header();
-
 
 
 echo $OUTPUT->heading_with_help($strinscriptions, 'mass_enroll', 'local_mass_enroll','icon',get_string('mass_enroll', 'local_mass_enroll'));
 echo $OUTPUT->box (get_string('mass_enroll_info', 'local_mass_enroll'), 'center');
 $mform->display();
 echo $OUTPUT->footer($course);
-exit;
+
 
 
 ?>

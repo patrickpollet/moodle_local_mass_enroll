@@ -43,6 +43,7 @@ defined('MOODLE_INTERNAL') || die();
  */
 function mass_enroll($cir, $course, $context, $data) {
     global $CFG,$DB;
+    require_once ($CFG->dirroot . '/group/lib.php');
 
     $result = '';
     
@@ -60,7 +61,8 @@ function mass_enroll($cir, $course, $context, $data) {
     $plugin = enrol_get_plugin('manual');
     //Moodle 2.x enrolment and role assignment are different
     // make sure couse DO have a manual enrolment plugin instance in that course
-    //that we are going to use
+    //that we are going to use (only one instance is allowed @see enrol/manual/lib.php get_new_instance)
+    // thus call to get_record is safe 
     $instance = $DB->get_record('enrol', array('courseid' => $course->id, 'enrol' => 'manual'));
     if (empty($instance)) {
         // Only add an enrol instance to the course if non-existent
@@ -75,15 +77,14 @@ function mass_enroll($cir, $course, $context, $data) {
         $a = new StdClass();
 
         if (empty ($fields))
-        continue;
+            continue;
 
         // print_r($fields);
         // $enrollablecount++;
         // continue;
         
-        // 1rst column = id Moodle (idnumber,username or email)
-        
-          // get rid on eventual double quotes unfortunately not done by Moodle CSV importer 
+        // 1rst column = id Moodle (idnumber,username or email)    
+        // get rid on eventual double quotes unfortunately not done by Moodle CSV importer 
             $fields[0]= str_replace('"', '', trim($fields[0]));
         
         if (!$user = $DB->get_record('user', array($useridfield => $fields[0]))) {
