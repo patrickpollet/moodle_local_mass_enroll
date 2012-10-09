@@ -22,14 +22,18 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
     $row = $tabs = array();
-    $row[] = new tabobject('mass_enroll',
-                           $CFG->wwwroot.'/local/mass_enroll/mass_enroll.php?id='.$id,
-                           get_string('mass_enroll','local_mass_enroll'));
-
-    $row[] = new tabobject('mass_unenroll',
-                           $CFG->wwwroot.'/local/mass_enroll/mass_unenroll.php?id='.$id,
-                           get_string('mass_unenroll', 'local_mass_enroll'));
-
+    
+    if (has_capability('local/mass_enroll:enrol', $context)) {
+        $row[] = new tabobject('mass_enroll',
+                               $CFG->wwwroot.'/local/mass_enroll/mass_enroll.php?id='.$id,
+                              get_string('mass_enroll','local_mass_enroll'));
+    }
+    
+    if (has_capability('local/mass_enroll:unenrol', $context)) {
+        $row[] = new tabobject('mass_unenroll',
+                               $CFG->wwwroot.'/local/mass_enroll/mass_unenroll.php?id='.$id,
+                               get_string('mass_unenroll', 'local_mass_enroll'));
+    }
   
     $tabs[] = $row;
     echo '<div class="groupdisplay">';

@@ -26,7 +26,7 @@ if (!$course = $DB->get_record('course', array('id' => $id))) {
 
 require_course_login($course);
 $context = context_course::instance($course->id);
-require_capability('moodle/role:assign', $context);
+require_capability('local/mass_enroll:enrol', $context);
 
 /// Start making page
 $PAGE->set_pagelayout('incourse');
@@ -86,6 +86,10 @@ if ($data = $mform->get_data(false)) { // no magic quotes
 
     echo $OUTPUT->continue_button($PAGE->url); // Back to this page
     echo $OUTPUT->footer($course);
+    //path must be relative to 'module name', here 'course'
+    add_to_log($course->id, 'course', 'enrol', '../local/mass_enroll/mass_enroll.php?id='.$course->id,$strinscriptions);
+    
+    
     die();
 }
 

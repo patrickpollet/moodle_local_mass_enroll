@@ -1,6 +1,11 @@
 <?php
 $string['pluginname'] = 'Inscriptions massives';
 
+//capabilities name required Moodle 2.3
+$string['mass_enroll:enrol'] = 'Inscrire des utilisateurs à un cours par fichier CSV';
+$string['mass_enroll:unenrol'] = 'Désinscrire des utilisateurs d\' un cours par fichier CSV';
+
+
 $string['mass_enroll'] = 'Inscriptions massives';
 $string['mass_unenroll'] = 'Désinscriptions massives';
 $string['mass_enroll_info'] = <<<EOS

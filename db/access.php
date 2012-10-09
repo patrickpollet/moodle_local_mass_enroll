@@ -30,26 +30,24 @@ defined('MOODLE_INTERNAL') || die();
 $capabilities = array(
 
     'local/mass_enroll:enrol' => array(
-        'riskbitmask' => RISK_XSS | RISK_DATALOSS,
+        'riskbitmask' => RISK_XSS,
 
         'captype' => 'write',
         'contextlevel' => CONTEXT_COURSE,
         'archetypes' => array(
             'editingteacher' => CAP_ALLOW,
-            'coursecreator' => CAP_ALLOW,
             'manager' => CAP_ALLOW
         ),
         'clonepermissionsfrom' => 'moodle/role:assign'
     ),
 
+    // not given by default to editingteacher ( life is tough) 
     'local/mass_enroll:unenrol' => array(
-
         'riskbitmask' => RISK_XSS | RISK_DATALOSS ,
 
         'captype' => 'write',
         'contextlevel' => CONTEXT_COURSE,
         'archetypes' => array(
-            'coursecreator' => CAP_ALLOW,
             'manager' => CAP_ALLOW
         ),
          'clonepermissionsfrom' => 'moodle/role:assign'
