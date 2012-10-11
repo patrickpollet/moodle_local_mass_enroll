@@ -3,15 +3,16 @@
 
 require_once ($CFG->libdir . '/formslib.php');
 
-class mass_enroll_form extends moodleform {
+class mass_unenroll_form extends moodleform {
 
 	function definition() {
-		global $CFG,$DB; 
-		
+		global $CFG;
+
+
 		$mform = & $this->_form;
 		$course = $this->_customdata['course'];
 		$context = $this->_customdata['context'];
-		
+
 		$mform->addElement('header', 'general', ''); //fill in the data depending on page params
 		//later using set_data
 		$mform->addElement('filepicker', 'attachment', get_string('location', 'enrol_flatfile'));
@@ -32,10 +33,6 @@ class mass_enroll_form extends moodleform {
         $mform->addElement('select', 'encoding', get_string('encoding', 'tool_uploaduser'), $choices);
         $mform->setDefault('encoding', 'UTF-8');
 		
-        $roles = get_assignable_roles($context);
-		$mform->addElement('select', 'roleassign', get_string('roleassign', 'local_mass_enroll'), $roles);
-		$studentRole= $DB->get_record('role', array('archetype'=>'student'));
-		$mform->setDefault('roleassign', $studentRole->id);
 
 		$ids = array (
 			'idnumber' => get_string('idnumber', 'local_mass_enroll'),
@@ -45,12 +42,7 @@ class mass_enroll_form extends moodleform {
 		$mform->addElement('select', 'firstcolumn', get_string('firstcolumn', 'local_mass_enroll'), $ids);
 		$mform->setDefault('firstcolumn', 'idnumber');
 
-		$mform->addElement('selectyesno', 'creategroups', get_string('creategroups', 'local_mass_enroll'));
-		$mform->setDefault('creategroups', 1);
-
-			$mform->addElement('selectyesno', 'creategroupings', get_string('creategroupings', 'local_mass_enroll'));
-			$mform->setDefault('creategroupings', 1);
-
+		
 
 		$mform->addElement('selectyesno', 'mailreport', get_string('mailreport', 'local_mass_enroll'));
 		$mform->setDefault('mailreport', 1);
@@ -58,7 +50,7 @@ class mass_enroll_form extends moodleform {
 		//-------------------------------------------------------------------------------
 		// buttons
 
-		$this->add_action_buttons(true, get_string('enroll', 'local_mass_enroll'));
+		$this->add_action_buttons(true, get_string('unenroll', 'local_mass_enroll'));
 
 		$mform->addElement('hidden', 'id', $course->id);
 		$mform->setType('id', PARAM_INT);
