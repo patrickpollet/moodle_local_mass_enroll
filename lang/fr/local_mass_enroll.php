@@ -10,7 +10,7 @@ $string['mass_enroll'] = 'Inscriptions massives';
 $string['mass_unenroll'] = 'Désinscriptions massives';
 $string['mass_enroll_info'] = <<<EOS
 <p>
-Avec cette option vous allez pouvoir inscrire Massivement à votre cours une liste d\'utilisateurs existants dans Moodle
+Avec cette option vous allez pouvoir inscrire massivement à votre cours une liste d'utilisateurs existants dans Moodle
 contenue dans un fichier que vous avez préparé, un compte par ligne 
 </p>
 <p>
@@ -20,13 +20,13 @@ contenue dans un fichier que vous avez préparé, un compte par ligne
 Ce fichier peut contenir une ou deux colonnes, séparées alors par une virgule, ou point-virgule ou une tabulation. <br/>
 <b>La première doit contenir un identifiant unique : N° étudiant (idnumber Moodle), login ou email  </b> de l'utilisateur concerné. <br/>
 La seconde, <b>si elle est présente, </b> indique le groupe (au sens de ce cours Moodle) ou vous voulez inscrire cet utilisateur. <br/>
-Vous pouvez répeter l'opération plusieurs fois sans dommages, par exemple si vous avez oublié le groupe ou inscrire les utilisateurs.
+Vous pouvez répéter l'opération plusieurs fois sans dommages, par exemple si vous avez oublié le groupe ou inscrire les utilisateurs.
 </p>
 EOS;
 
 $string['mass_unenroll_info'] = <<<EOS
 <p>
-Avec cette option vous allez pouvoir désinscrire Massivement de votre cours une liste d\'utilisateurs déja inscrits à ce cours, contenue dans un fichier que vous avez préparé, un compte par ligne 
+Avec cette option vous allez pouvoir désinscrire massivement de votre cours une liste d'utilisateurs déja inscrits à ce cours, contenue dans un fichier que vous avez préparé, un compte par ligne 
 </p>
 <p>
 <b>La premiere ligne </b>, les lignes vides, ou celles contenant un identifiant de compte inconnu seront ignorées.
@@ -36,7 +36,7 @@ Ce fichier peut contenir plusieurs colonnes, séparées alors par une virgule, o
 <b>La première doit contenir un identifiant unique : N° étudiant (idnumber Moodle), login ou email  </b> de l'utilisateur concerné. <br/>
 Les autres colonnes, si présente seront simplement ignorées. Ce fichier peut donc être le même que celui utilisé lors d'une inscription massive.<br/>
 
-Vous pouvez répeter l'opération plusieurs fois sans dommages, par exemple si vous avez oublié quelques utilisateurs.
+Vous pouvez répéter l'opération plusieurs fois sans dommages, par exemple si vous avez oublié quelques utilisateurs.
 </p>
 EOS;
 $string['enroll'] = 'Les inscrire à mon cours';
