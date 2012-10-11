@@ -7,7 +7,9 @@ class block_mass_enroll extends block_list {
     }
 
     function applicable_formats() {
-        return array('site' => false, 'course-view' => true, 'my'=>false);
+       // return array('site' => false, 'course-view' => true, 'my'=>false);
+        return array('all' => true, 'mod' => false, 'my' => false,
+                     'tag' => false);
     }
 
     function specialization() {
