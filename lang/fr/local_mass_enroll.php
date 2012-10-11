@@ -93,7 +93,7 @@ $string['mass_enroll_help']= <<<EOS
 <h1>Inscriptions massives</h1>
 
 <p>
-Avec cette option vous allez pouvoir inscrire Massivement à votre cours une liste d\'utilisateurs existants dans Moodle
+Avec cette option vous allez pouvoir inscrire massivement à votre cours une liste d'utilisateurs existants dans Moodle
 contenue dans un fichier que vous avez préparé, un compte par ligne 
 </p>
 <p>
@@ -105,7 +105,7 @@ Ce fichier peut contenir <b>plusieurs colonnes</b>, séparées alors par une vir
 Il peut être préparé à partir de vos listes de Scolarité par une simple remise en forme et un export CSV depuis votre tableur favori (*)</p>
 
 <p>
-<b>La première colonne doit contenir un identifiant unique de l étudiant concerné</b>, par défaut son numéro interne (idnumber),
+<b>La première colonne doit contenir un identifiant unique de l'utilisateur concerné</b>, par défaut son numéro interne (idnumber),
 mais vous pouvez choisir aussi une liste d'adresses email ou de logins (**). </p>
 
 <p>
@@ -126,7 +126,7 @@ le rôle enseignant ou enseignant non éditeur.
 </p>
 
 <p>
-Vous pouvez répeter l'opération plusieurs fois sans dommages, par exemple si vous avez oublié le groupe ou inscrire les étudiants
+Vous pouvez répéter l'opération plusieurs fois sans dommages, par exemple si vous avez oublié le groupe ou inscrire les étudiants
 ou si vous l'avez mal orthographié.
 </p>
 
@@ -194,7 +194,7 @@ $string['mass_unenroll_help'] = <<<EOS
 <h1>Désinscriptions massives</h1>
 
 <p>
-Avec cette option vous allez pouvoir désinscrire Massivement de votre cours une liste d\'utilisateurs existants dans Moodle
+Avec cette option vous allez pouvoir désinscrire massivement de votre cours une liste d'utilisateurs existants dans Moodle
 contenue dans un fichier que vous avez préparé, un compte par ligne. 
 </p>
 
@@ -207,7 +207,7 @@ Il peut être préparé à partir de vos listes de Scolarité ou par un export d
 le même fichier que celui utilisé lors d'une inscription massive. (*)</p>
 
 <p>
-<b>La première colonne doit contenir un identifiant unique de l étudiant concerné</b>, par défaut son numéro interne (idnumber),
+<b>La première colonne doit contenir un identifiant unique de l'utilisateur concerné</b>, par défaut son numéro interne (idnumber),
 mais vous pouvez choisir aussi une liste d'adresses email ou de logins (**). </p>
 
 <p>
@@ -215,7 +215,7 @@ Toutes les autres colonnes seront ignorées. </p>
 
 
 <p>
-Vous pouvez répeter l'opération plusieurs fois sans dommages, par exemple si vous avez oublié quelques utilisateurs à désinscrire.
+Vous pouvez répéter l'opération plusieurs fois sans dommages, par exemple si vous avez oublié quelques utilisateurs à désinscrire.
 </p>
 
 
