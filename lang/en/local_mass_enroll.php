@@ -7,7 +7,7 @@ $string['mass_enroll:unenrol'] = 'Unenrol users from a course by CSV file';
 
 $string['mass_enroll'] = 'Bulk enrolments';
 $string['mass_unenroll'] = 'Bulk unenrolments';
-$string['mass_enroll_info'] = <<<EOS
+$string['mass_enroll_info'] ='
 <p>
 With this option you are going to enrol a list of known users from a file with one account per line
 </p>
@@ -18,14 +18,14 @@ The file may contains several columns, separated by a comma, a semi-column or a 
 <br/>
 <b>The first one must contains a unique account identifier : idnumber (by default) login or email  </b> of the target user. <br/>
 
-The second <b>if present,</b> contains the group's name in wich you want that user be be added. <br/>
+The second <b>if present,</b> contains the group name in wich you want that user be be added. <br/>
 
 You may repeat this operation at will without damages, for example if you forgot the group for some users.
 </p>
-EOS;
+';
 
 
-$string['mass_unenroll_info'] = <<<EOS
+$string['mass_unenroll_info'] =' 
 <p>
 With this option you are going to unenrol a list on users from a file with one account per line. 
 </p>
@@ -41,7 +41,7 @@ Other columns, if present, will be ignored. Thus the file can be the same as the
 
 You may repeat this operation at will without damages, for example if you forgot some users to unenroll.
 </p>
-EOS;
+';
 
 $string['enroll'] = 'Enrol them to my course';
 $string['unenroll'] = 'Unenrol them from my course';
@@ -94,7 +94,7 @@ $string['im:stats_grp'] = '{$a->nb} grouping(s) created : {$a->what}';
 $string['im:err_opening_file'] = 'error opening file {$a}';
 
 
-$string['mass_enroll_help'] = <<<EOS
+$string['mass_enroll_help'] = ' 
 <h1>Bulk enrolments</h1>
 
 <p>
@@ -113,7 +113,7 @@ and add if needed a column with groups to which you want these users to be added
 <b> The first one must contains a unique account identifier </b>: idnumber (by default) login or email  of the target user. (**). </p>
 
 <p>
-The second <b>if present,</b> contains the group's name in wich you want that user to be added. </p>
+The second <b>if present,</b> contains the group name in wich you want that user to be added. </p>
 
 <p>
 If the group name does not exist, it will be created in your course, together with a grouping of the same name to which the group will be added.
@@ -188,19 +188,17 @@ unknown                                  unknown account skipped
 </pre>
 
 <p>
-<span <font color='red'>(*) </font></span>: double quotes and spaces, added by some spreadsheet programs will be removed.
+<span <font color=\'red\'>(*) </font></span>: double quotes and spaces, added by some spreadsheet programs will be removed.
 </p>
 
 <p>
-<span <font color='red'>(**) </font></span>: target account must exist in Moodle ; this is normally the case if Moodle is synchronized with
+<span <font color=\'red\'>(**) </font></span>: target account must exist in Moodle ; this is normally the case if Moodle is synchronized with
 some external directory (LDAP...)
 </p>
+';
 
 
-EOS;
-
-
-$string['mass_unenroll_help'] = <<<EOS
+$string['mass_unenroll_help'] = ' 
 <h1>Bulk unenrolments</h1>
 
 <p>
@@ -234,12 +232,10 @@ You may repeat this operation at will without dammages, for example if you forgo
 
 
 <p>
-<span <font color='red'>(*) </font></span>: double quotes and spaces, added by some spreadsheet programs will be removed.
+<span <font color=\'red\'>(*) </font></span>: double quotes and spaces, added by some spreadsheet programs will be removed.
 </p>
 
 <p>
-<span <font color='red'>(**) </font></span>: target account must exist in Moodle and be enrolled to this course.
+<span <font color=\'red\'>(**) </font></span>: target account must exist in Moodle and be enrolled to this course.
 </p>
-
-
-EOS;
+' ;
