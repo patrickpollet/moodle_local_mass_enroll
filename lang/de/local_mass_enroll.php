@@ -1,6 +1,6 @@
 <?php
 /*
- * German translation courtesy of Björn Fisseler <bjoern.fisseler@fernuni-hagen.de>
+ * German translation courtesy of Bjï¿½rn Fisseler <bjoern.fisseler@fernuni-hagen.de>
  */
 $string['pluginname'] = 'Mass enrolments';
 
@@ -10,23 +10,23 @@ $string['mass_enroll:unenrol'] = 'Austragen von Nutzer/innen aus einem Kurs per 
 $string['mass_enroll'] = 'Massen-Einschreibung';
 $string['mass_unenroll'] = 'Massen-Austragung';
 
-$string['mass_enroll_info'] = <<<EOS
+$string['mass_enroll_info'] =' 
 <p>Mit dieser Option schreiben Sie eine Liste mit bekannten Nutzer/innen ein. Verwenden Sie dazu eine Datei mit einem Nutzerkonto pro Zeile.</p>
 <p><strong>Die erste Zeile,</strong> leere Zeilen oder unbekannte Konten werden &uuml;bersprungen. </p>
 <p>Die Datei darf eine oder zwei Spalten enthalten, die durch ein Komma, Semikolon oder Tab voneinander getrennt sind.<br/>
 <strong>Die erste Spalte muss eine eindeutige Kontenbezeichnung enthalten: ID-Nummer (voreingestellt), Anmeldename oder Email </strong> des einzutragenden Nutzerkontos.</p>
 <p>Die zweite Spalte,<strong>sofern vorhanden,</strong> enth&auml;lt den Gruppennamen der Gruppe, zu der das Nutzerkonto hinzugef&uuml;gt werden soll.</p>
 <p>Diese Aktion kann beliebig oft wiederholt werden, wenn beispielsweise der Gruppenname vergessen oder falsch angegeben wurde.</p>
-EOS;
+';
 
-$string['mass_unenroll_info'] = <<<EOS
+$string['mass_unenroll_info'] = '
 <p>Mit dieser Option tragen Sie eine Liste mit bekannten Nutzer/innen aus. Verwenden Sie dazu eine Datei mit einem Nutzerkonto pro Zeile.</p>
 <p><strong>Die erste Zeile,</strong> leere Zeilen oder unbekannte Konten werden &uuml;bersprungen. </p>
 <p>Die Datei darf eine oder zwei Spalten enthalten, die durch ein Komma, Semikolon oder Tab voneinander getrennt sind.
 <strong>Die erste Spalte muss eine eindeutige Kontenbezeichnung enthalten: ID-Nummer (voreingestellt), Anmeldename oder Email </strong> des auszutragenden Nutzerkontos.</p>
 <p>Andere Spalten, sofern vorhanden, werden ignoriert. Daher kann die zur Einschreibung genutzte CSV-Datei auch f&uuml;r die Austragung verwendet werden. 
 </p>
-EOS;
+';
 
 $string['enroll'] = 'In meinen Kurs einschreiben';
 $string['unenroll'] = 'Aus meinem Kurs austragen';
@@ -46,14 +46,14 @@ Guten Tag,
 Sie haben gerade folgende Nutzerinnen und Nutzer in Ihren Kurs \'{$a->course}\' eingeschrieben.
 Hier ist ein Bericht der Aktionen :
 {$a->report}
-Mit freundlichen Grüßen.
+Mit freundlichen Grï¿½ï¿½en.
 ';
 $string['mail_unenrolment']='
 Guten Tag,
 Sie haben gerade folgende Nutzerinnen und Nutzer aus Ihrem Kurs \'{$a->course}\' ausgetragen.
 Hier ist ein Bericht der Aktionen :
 {$a->report}
-Mit freundlichen Grüßen.
+Mit freundlichen Grï¿½ï¿½en.
 ';
 
 $string['im:using_role'] = 'Nutzer/in eingeschrieben als: {$a} ';
@@ -62,7 +62,7 @@ $string['im:unenrolled_ok'] = '{$a} ausgetragen ';
 $string['im:error_out'] = 'Fehler beim austragen von {$a}';
 $string['email_sent'] = 'Email geschickt an {$a}';
 $string['im:opening_file'] = '&Ouml;ffne Datei: {$a} ';
-$string['im:user_unknown'] = '{$a} unbekannt - überspringe Zeile';
+$string['im:user_unknown'] = '{$a} unbekannt - ï¿½berspringe Zeile';
 $string['im:already_in'] = '{$a} bereits eingeschrieben ';
 $string['im:enrolled_ok'] = '{$a} eingeschrieben ';
 $string['im:error_in'] = 'Fehler bei Einschreibung von {$a}';
@@ -81,25 +81,25 @@ $string['im:stats_ui'] = '{$a} ausgetragen';
 
 
 
-$string['mass_enroll_help'] = <<<EOS
+$string['mass_enroll_help'] = ' 
 <h1>Masseneinschreibung</h1>
 
 <p>Mit dieser Option schreiben Sie eine Liste mit bekannten Nutzerinnen und Nutzern ein. Verwenden Sie dazu eine Datei mit einem Nutzerkonto pro Zeile.</p>
 <p><strong>Die erste Zeile,</strong> leere Zeilen oder unbekannte Konten werden &uuml;bersprungen. </p>
 <p>Die Datei darf eine oder zwei Spalten enthalten, die durch ein Komma, Semikolon oder Tab voneinander getrennt sind.<br/>
-Sie sollten die Datei mit einer Tabellenkalkulation auf Grundlage offizieller Teilnehmendenlisten erstellen und dann bei Bedarf eine Spalte mit den Gruppen hinzuf&uuml;gen, zu denen die Teilnehmenden zugewiesen werden sollen. Speichern Sie die Datei abschließend als <abbr title"Comma Separated Value">CSV</abbr>.(*)</p>
+Sie sollten die Datei mit einer Tabellenkalkulation auf Grundlage offizieller Teilnehmendenlisten erstellen und dann bei Bedarf eine Spalte mit den Gruppen hinzuf&uuml;gen, zu denen die Teilnehmenden zugewiesen werden sollen. Speichern Sie die Datei abschlieï¿½end als <abbr title"Comma Separated Value">CSV</abbr>.(*)</p>
 
 <p><strong>Die erste Spalte muss eine eindeutige Kontenbezeichnung enthalten: ID-Nummer (voreingestellt), Anmeldename oder Email </strong> des einzutragenden Nutzerkontos.(**)</p>
 <p>Die zweite Spalte,<strong>sofern vorhanden,</strong> enth&auml;lt den Gruppennamen der Gruppe, zu der das Nutzerkonto hinzugef&uuml;gt werden soll.</p>
 
-<p>Wenn die Gruppe nicht existiert, wird sie in dem Kurs erstellt, gemeinsam mit einer Gruppierung mit demselben Namen, zu dem die Gruppe hinzugefügt wird.<br/>
-Das geschieht deshalb, weil Moodle Aktivit&auml;ten auf Gruppierungen (Gruppen von Gruppen) beschr&auml;nkt werden k&ouml;nnen, nicht aber auf Gruppen. Deshalb wird dieses Vorgehen Ihr Leben leichter machen. Allerdings müssen Gruppierungen vom Admin freigegeben sein.</p>
+<p>Wenn die Gruppe nicht existiert, wird sie in dem Kurs erstellt, gemeinsam mit einer Gruppierung mit demselben Namen, zu dem die Gruppe hinzugefï¿½gt wird.<br/>
+Das geschieht deshalb, weil Moodle Aktivit&auml;ten auf Gruppierungen (Gruppen von Gruppen) beschr&auml;nkt werden k&ouml;nnen, nicht aber auf Gruppen. Deshalb wird dieses Vorgehen Ihr Leben leichter machen. Allerdings mï¿½ssen Gruppierungen vom Admin freigegeben sein.</p>
 
 <p>In der gleichen CSV-Datei k&ouml;nnen verschiedene Gruppen verwendet werden oder auch Nutzerkonten ohne Gruppenzuweisung genutzt werden.</p>
 
 <p>Sie k&ouml;nnen die entsprechenden Optionen auch deaktivieren, wenn Sie sicher sind, dass die Gruppen und Gruppierungen schon vorhanden sind.</p>
 
-<p>Üblicherweise werden die Nutzer/innen als Studierende eingeschrieben, aber Sie k&ouml;nnen auch andere Rollen auswählen, wenn Sie die dafür erforderlichen Rechte besitzen.</p>
+<p>ï¿½blicherweise werden die Nutzer/innen als Studierende eingeschrieben, aber Sie k&ouml;nnen auch andere Rollen auswï¿½hlen, wenn Sie die dafï¿½r erforderlichen Rechte besitzen.</p>
 
 <p>Diese Aktion kann beliebig oft wiederholt werden, wenn beispielsweise der Gruppenname vergessen oder falsch angegeben wurde.</p>
 
@@ -147,34 +147,33 @@ ppollet      groupe_de_test              wird in die Gruppe eingetragen
 codet        groupe_de_test              ebenso
 astorck      autre_groupe                wird in eine andere Gruppe eingetragen
 yjayet                                   keine Gruppe f&uuml;r dieses Konto
-                                         leere Zeile wird übersprungen
+                                         leere Zeile wird ï¿½bersprungen
 unknown                                  unbekanntes Konto wird ignoriert
 </pre>
 
-<p><span <font color='red'>(*) </font></span>: doppelte Anf&uuml;hrungszeichen und Leerzeichen werden entfernt.</p>
+<p><span <font color=\'red\'>(*) </font></span>: doppelte Anf&uuml;hrungszeichen und Leerzeichen werden entfernt.</p>
 
-<p><span <font color='red'>(**) </font></span>: Die Nutzerkonten m&uuml;ssen in Moodle vorhanden sein. Das ist normalerweise der Fall, wenn Moodle mit einem externen Verzeichnis (LDAP, ...) synchronisiert wird.</p>
+<p><span <font color=\'red\'>(**) </font></span>: Die Nutzerkonten m&uuml;ssen in Moodle vorhanden sein. Das ist normalerweise der Fall, wenn Moodle mit einem externen Verzeichnis (LDAP, ...) synchronisiert wird.</p>
 
 
-EOS;
+';
 
-$string['mass_unenroll_help'] = <<<EOS
+$string['mass_unenroll_help'] = ' 
 <h1>Massen-Austragung</h1>
 
 <p>Mit dieser Option tragen Sie eine Liste mit bekannten Nutzer/innen aus Ihrem Kurs aus. Verwenden Sie dazu eine Datei mit einem Nutzerkonto pro Zeile.</p>
 <p><strong>Die erste Zeile,</strong> leere Zeilen oder unbekannte Konten werden &uuml;bersprungen.</p>
 <p>Die Datei darf eine oder zwei Spalten enthalten, die durch ein Komma, Semikolon oder Tab voneinander getrennt sind.<br/>
-Sie sollten die Datei mit einer Tabellenkalkulation auf Grundlage offizieller Teilnehmendenlisten erstellen und dann bei Bedarf eine Spalte mit den Gruppen hinzuf&uuml;gen, zu denen die Teilnehmenden zugewiesen werden sollen. Speichern Sie die Datei abschließend als <abbr title"Comma Separated Value">CSV</abbr>.(*)</p>
+Sie sollten die Datei mit einer Tabellenkalkulation auf Grundlage offizieller Teilnehmendenlisten erstellen und dann bei Bedarf eine Spalte mit den Gruppen hinzuf&uuml;gen, zu denen die Teilnehmenden zugewiesen werden sollen. Speichern Sie die Datei abschlieï¿½end als <abbr title"Comma Separated Value">CSV</abbr>.(*)</p>
 
 <p><strong>Die erste Spalte muss eine eindeutige Kontenbezeichnung enthalten: ID-Nummer (voreingestellt), Anmeldename oder Email </strong> des einzutragenden Nutzerkontos.(**)</p>
 <p>Die zweite Spalte,<strong>sofern vorhanden,</strong> wird ignoriert.</p>
 
 <p>Diese Aktion kann beliebig oft wiederholt werden, wenn beispielsweise der Gruppenname vergessen oder falsch angegeben wurde.</p>
-<p><span <font color='red'>(*) </font></span>: doppelte Anf&uuml;hrungszeichen und Leerzeichen werden entfernt.</p>
+<p><span <font color=\'red\'>(*) </font></span>: doppelte Anf&uuml;hrungszeichen und Leerzeichen werden entfernt.</p>
 
-<p><span <font color='red'>(**) </font></span>: Die Nutzerkonten m&uuml;ssen in Moodle vorhanden sein. Das ist normalerweise der Fall, wenn Moodle mit einem externen Verzeichnis (LDAP, ...) synchronisiert wird.</p>
+<p><span <font color=\'red\'>(**) </font></span>: Die Nutzerkonten m&uuml;ssen in Moodle vorhanden sein. Das ist normalerweise der Fall, wenn Moodle mit einem externen Verzeichnis (LDAP, ...) synchronisiert wird.</p>
 
-
-EOS;
+';
 
 ?>
