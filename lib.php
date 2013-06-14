@@ -31,6 +31,50 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Hook to insert a link in settings navigation menu block
+ *
+ * @param settings_navigation $navigation
+ * @param course_context      $context
+ * @return void
+ */
+function local_mass_enroll_extends_settings_navigation(settings_navigation $navigation, $context) {
+    global $CFG;
+    // If not in a course context, then leave
+    if ($context == null || $context->contextlevel != CONTEXT_COURSE) {
+        return;
+    }
+
+    // When on front page there is 'frontpagesettings' node, other
+    // courses will have 'courseadmin' node
+    if (null == ($courseadmin_node = $navigation->get('courseadmin'))) {
+        // Keeps us off the front page
+        return;
+    }
+    if (null == ($useradmin_node = $courseadmin_node->get('users'))) {
+        return;
+    }
+
+    // Add our links no need to patch core anymore !!!!
+
+    if (empty($CFG->allow_mass_enroll_feature)) {
+        return;
+    }
+     
+    if (has_capability('local/mass_enroll:enrol', $context)) {
+        $url = new moodle_url('/local/mass_enroll/mass_enroll.php', array('id'=>$context->instanceid));
+        $useradmin_node->add(get_string('mass_enroll', 'local_mass_enroll'), $url, navigation_node::TYPE_SETTING, null, 'massenrols', new pix_icon('i/admin', ''));
+    }
+    if (has_capability('local/mass_enroll:unenrol', $context)) {
+        $url = new moodle_url('/local/mass_enroll/mass_unenroll.php', array('id'=>$context->instanceid));
+        $useradmin_node->add(get_string('mass_unenroll', 'local_mass_enroll'), $url, navigation_node::TYPE_SETTING, null, 'massunenrols', new pix_icon('i/admin', ''));
+    }
+     
+
+}
+
+
+
 
 
 /**
