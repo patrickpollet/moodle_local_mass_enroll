@@ -87,7 +87,11 @@ if ($data = $mform->get_data(false)) { // no magic quotes
     echo $OUTPUT->continue_button($PAGE->url); // Back to this page
     echo $OUTPUT->footer($course);
     //path must be relative to 'module name', here 'course'
-    add_to_log($course->id, 'course', 'enrol', '../local/mass_enroll/mass_enroll.php?id='.$course->id,$strinscriptions);
+    //add_to_log($course->id, 'course', 'enrol', '../local/mass_enroll/mass_enroll.php?id='.$course->id,$strinscriptions);
+    // Rev 12/11/2014 : some core function (get_recent_enrolments())  expect the info field of log record to be integer
+    // when action field is 'enrol'. This produced fatal SQL errors with PostGres see https://github.com/patrickpollet/moodle_local_mass_enroll/issues/5
+    // so we changed action value from 'enrol' to 'massenrol' 
+    add_to_log($course->id, 'course', 'massenrol', '../local/mass_enroll/mass_enroll.php?id='.$course->id,$strinscriptions);
     
     
     die();
