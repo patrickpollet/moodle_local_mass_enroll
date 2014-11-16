@@ -11,6 +11,9 @@ Main features are :
 * email reports can be send
 * import can be repeated if some users are to be in several groups
 * usage can be restricted by modifying specific capabilities (local/mass_enroll:enrol and local:/mass_enroll:unenrol) 
-* can be inserted in Course's admin menu or called from a specific Moodle block 
+* can be inserted in Course's admin menu or called from a specific Moodle block
 
-See the wiki page https://github.com/patrickpollet/moodle_local_mass_enroll/wiki for installation and usage. 
+This plugin has been tested with Moodle 2.3, 2.4, 2.5, 2.6 and 2.7.
+With Moodle 2.8, two deprecation notices are emitted in 'full developper debug mode' concerning add_to_log() API call.
+
+See the wikai page https://github.com/patrickpollet/moodle_local_mass_enroll/wiki for installation and usage. 
